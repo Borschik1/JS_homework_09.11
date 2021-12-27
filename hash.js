@@ -18,6 +18,7 @@ function comp(string, sub, i) {
 function hashLine(string, sub) {
 	let answers = [];
 	let subHash = 0;
+	let coll = 0;
 	let subLen = sub.length;
 	for (let i = 0; i < subLen; ++i) {
 		subHash += sub.charAt(i).charCodeAt();
@@ -29,6 +30,8 @@ function hashLine(string, sub) {
 	if (now == subHash) {
 		if (comp(string, sub, 0)) {
 			answers.push(0);
+		} else {
+			coll++;
 		}
 	}
 	for (let i = subLen; i < string.length; ++i) {
@@ -36,16 +39,21 @@ function hashLine(string, sub) {
 		if (now == subHash) {
 			if (comp(string, sub, i - subLen + 1)) {
 				answers.push(i - subLen + 1);
+			} else {
+				coll++;
 			}
 		}
 	}
-	return answers;
+	console.log(answers);
+	console.log(coll);
+	return 0;
 }
 
 
 function hashSqare(string, sub) {
 	let answers = [];
 	let subHash = 0;
+	let coll = 0;
 	let subLen = sub.length;
 	for (let i = 0; i < subLen; ++i) {
 		subHash += Math.pow(sub.charAt(i).charCodeAt(), 2);
@@ -64,16 +72,21 @@ function hashSqare(string, sub) {
 		if (now == subHash) {
 			if (comp(string, sub, i - subLen + 1)) {
 				answers.push(i - subLen + 1);
+			} else {
+				coll++;
 			}
 		}
 	}
-	return answers;
+	console.log(answers);
+	console.log(coll);
+	return 0;
 }
 
 
 function hashRabCarp(string, sub) {
 	let answers = [];
 	let subHash = 0;
+	let coll = 0;
 	let subLen = sub.length;
 	for (let i = 0; i < subLen; ++i) {
 		subHash = subHash * 2 + sub.charAt(i).charCodeAt();
@@ -93,21 +106,25 @@ function hashRabCarp(string, sub) {
 		if (now == subHash) {
 			if (comp(string, sub, i - subLen + 1)) {
 				answers.push(i - subLen + 1);
+			} else {
+				coll++;
 			}
 		}
 	}
-	return answers;
+	console.log(answers);
+	console.log(coll);
+	return 0;
 }
 
 
 timeNow = new Date();
-console.log(hashLine(string, sub));
+hashLine(string, sub);
 console.log('hashLine', new Date() - timeNow, '\n');
 
 timeNow = new Date();
-console.log(hashSqare(string, sub));
+hashSqare(string, sub);
 console.log('hashSqare', new Date() - timeNow, '\n');
 
 timeNow = new Date();
-console.log(hashRabCarp(string, sub));
+hashRabCarp(string, sub);
 console.log('hashRabCarp', new Date() - timeNow, '\n');
